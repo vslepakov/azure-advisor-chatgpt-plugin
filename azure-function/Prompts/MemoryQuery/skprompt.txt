@@ -1,0 +1,6 @@
+{{recall $input}}
+---
+Considering only the information above, which has been loaded from Azure Advisor, answer the following.
+Question: {{$input}}
+
+Answer:
