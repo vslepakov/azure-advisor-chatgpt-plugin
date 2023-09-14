@@ -17,7 +17,6 @@ namespace AzureAdvisorPlugin;
 public class QueryCostSavings
 {
     private readonly IMemoryCache _memoryCache;
-    private readonly IKernel _kernel;
     private readonly ILogger<QueryCostSavings> _logger;
     private readonly ArmClient _client;
 
@@ -37,10 +36,9 @@ public class QueryCostSavings
                 | project solution, dcount_resources, sum_savings, currency
                 | order by sum_savings desc";
 
-    public QueryCostSavings(IKernel kernel, ArmClient client, IMemoryCache memoryCache)
+    public QueryCostSavings(ILoggerFactory loggerFactory, ArmClient client, IMemoryCache memoryCache)
     {
-        _kernel = kernel;
-        _logger = _kernel.LoggerFactory.CreateLogger<QueryCostSavings>();
+        _logger = loggerFactory.CreateLogger<QueryCostSavings>();
         _client = client;
         _memoryCache = memoryCache;
     }

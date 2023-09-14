@@ -18,14 +18,12 @@ public class QueryScore
 {
     private static readonly DefaultAzureCredential _credentials = new();
     private readonly IMemoryCache _memoryCache;
-    private readonly IKernel _kernel;
     private readonly ILogger<QueryScore> _logger;
     private readonly HttpClient _client;
 
-    public QueryScore(IKernel kernel, IHttpClientFactory httpClientFactory, IMemoryCache memoryCache)
+    public QueryScore(ILoggerFactory loggerFactory, IHttpClientFactory httpClientFactory, IMemoryCache memoryCache)
     {
-        _kernel = kernel;
-        _logger = _kernel.LoggerFactory.CreateLogger<QueryScore>();
+        _logger = loggerFactory.CreateLogger<QueryScore>();
         _client = httpClientFactory.CreateClient(nameof(QueryScore));
         _memoryCache = memoryCache;
     }
