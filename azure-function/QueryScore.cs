@@ -4,11 +4,9 @@ using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Microsoft.SemanticKernel;
 using System.Net;
 using Extensions;
 using Azure.Core;
-using Azure.Identity;
 using Models;
 using Newtonsoft.Json;
 
@@ -16,7 +14,6 @@ namespace AzureAdvisorPlugin;
 
 public class QueryScore
 {
-    private static readonly DefaultAzureCredential _credentials = new();
     private readonly IMemoryCache _memoryCache;
     private readonly ILogger<QueryScore> _logger;
     private readonly HttpClient _client;
