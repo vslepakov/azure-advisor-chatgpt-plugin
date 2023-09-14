@@ -4,7 +4,6 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Attributes;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Microsoft.SemanticKernel;
 using System.Net;
 using Azure.ResourceManager.ResourceGraph.Models;
 using Azure.ResourceManager.ResourceGraph;
