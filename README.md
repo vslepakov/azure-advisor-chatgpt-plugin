@@ -28,7 +28,7 @@ Main focus of this experiment was to better understand how to create and test Ch
 
 - Chat Copilot runs locally without any authentication and authorization. Use [this guide](https://learn.microsoft.com/en-us/semantic-kernel/chat-copilot/deploy-to-azure#app-registrations-identity) to configure Chat Copilot securely before deploying it anywhere.
 - **QueryRecommendations** operation builds up an embeddings cache for a `subscriptionId` but never actually invalidates/refreshes it introducing a potential memory leak. The cache is purged when the process is restarted.
-- **QueryRecommendations** - token limit for outbound calls to Azure OpenAI not being checked.
+- **QueryRecommendations** - token limit for outbound calls to Azure OpenAI (completion) not being checked.
 - It might make sense to use a real vector database. [These databases](https://learn.microsoft.com/en-us/semantic-kernel/memories/vector-db#available-connectors-to-vector-databases) are supported by Semantic Kernel.
 - Only subscriptions accessible using plugin's `DefaultAzureCredential` can be queried. To be able to query any subscriptions a user has access to without having to grant access to plugin's identity, e.g. [OAuth plugin authentication](https://platform.openai.com/docs/plugins/authentication/oauth) could be used.
 - Lack of authorization. It is essential to make sure that users can access their data only and someone else's data is never exposed to an unauthorized party. To achieve this, use an appropriate [authentication type](https://platform.openai.com/docs/plugins/authentication), as described above, AND also make sure that access to cached information is protected as well. 
